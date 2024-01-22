@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">NewWeatherApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="weather">Weather</string>
+    <string name="forecast">Forecast</string>
+    <string name="skip">Skip</string>
+    <string name="detailed_hourly_forecast">Detailed Hourly Forecast</string>
+    <string name="get_in_depth_weather_information.">Get in - depth weather information.</string>
 </resources>
