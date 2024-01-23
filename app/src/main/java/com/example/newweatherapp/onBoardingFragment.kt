@@ -16,13 +16,13 @@ import kotlin.math.log
 
 private var progress = 33
 private var currentPage = 0
-class onBoardingFragment : Fragment() {
-    lateinit var viewpagerAdapter: ViewpagerAdapter
-    lateinit var viewPager: ViewPager
-    lateinit var wormDotsIndicator: WormDotsIndicator
-    lateinit var nextButton : FloatingActionButton
-    lateinit var progressBar: ProgressBar
 
+class onBoardingFragment : Fragment() {
+    private lateinit var viewpagerAdapter: ViewpagerAdapter
+    private lateinit var viewPager: ViewPager
+    private lateinit var wormDotsIndicator: WormDotsIndicator
+    private lateinit var nextButton: FloatingActionButton
+    private lateinit var progressBar: ProgressBar
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,63 +32,76 @@ class onBoardingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewPager= view.findViewById(R.id.viewpager)
-        progressBar= view.findViewById(R.id.progressBar)
-        nextButton= view.findViewById(R.id.fb_next)
+        viewPager = view.findViewById(R.id.viewpager)
+        progressBar = view.findViewById(R.id.progressBar)
+        nextButton = view.findViewById(R.id.fb_next)
         nextButton.setOnClickListener {
-            if(currentPage==0){
-                currentPage=1
-                viewPager.setCurrentItem(currentPage)
-                progress = 33
-                progressBar.progress = progress
-            }
-            else if (currentPage==1) {
-                currentPage=2
-                viewPager.setCurrentItem(currentPage)
-                progress = 67
-                progressBar.progress = progress
-            }
-            else if(currentPage==2){
-                progress=100
-                progressBar.progress= progress
-            }
+            setProgressBarValueWithButton()
         }
-        wormDotsIndicator=view.findViewById(R.id.worm_dots_indicator)
+        wormDotsIndicator = view.findViewById(R.id.worm_dots_indicator)
         viewpagerAdapter = ViewpagerAdapter(requireContext())
-        viewPager.adapter= viewpagerAdapter
+        viewPager.adapter = viewpagerAdapter
         wormDotsIndicator.attachTo(viewPager)
-        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
                 positionOffsetPixels: Int
             ) {
-                if (position == 0) {
-                    currentPage=0
-                    progress = 33
-                    progressBar.progress = progress
-                }
-                if (position == 1) {
-                    currentPage=1
-                    progress = 67
-                    progressBar.progress = progress
-                }
-                if (position == 2) {
-                    currentPage=2
-                    progress = 100
-                    progressBar.progress = progress
+                when (position) {
+                    0 -> setProgressBarValue(0)
+                    1 -> setProgressBarValue(1)
+                    2 -> setProgressBarValue(2)
                 }
             }
-            override fun onPageSelected(position: Int) {
 
+            override fun onPageSelected(position: Int) {
             }
 
             override fun onPageScrollStateChanged(state: Int) {
-
             }
 
         })
 
+    }
+
+    private fun setProgressBarValue(position: Int) {
+        when (position) {
+            0 -> {
+                currentPage = 0
+                progress = 33
+                progressBar.progress = progress
+            }
+
+            1 -> {
+                currentPage = 1
+                progress = 67
+                progressBar.progress = progress
+            }
+
+            2 -> {
+                currentPage = 2
+                progress = 100
+                progressBar.progress = progress
+            }
+        }
+    }
+
+    private fun setProgressBarValueWithButton() {
+        if (currentPage == 0) {
+            currentPage = 1
+            viewPager.setCurrentItem(currentPage)
+            progress = 33
+            progressBar.progress = progress
+        } else if (currentPage == 1) {
+            currentPage = 2
+            viewPager.setCurrentItem(currentPage)
+            progress = 67
+            progressBar.progress = progress
+        } else if (currentPage == 2) {
+            progress = 100
+            progressBar.progress = progress
+        }
     }
 }
 
