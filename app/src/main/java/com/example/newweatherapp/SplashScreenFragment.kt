@@ -18,7 +18,7 @@ class SplashScreenFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         lifecycleScope.launch {
-            delay(5000)
+            delay(1000)
             findNavController().navigate(R.id.onBoardingFragment)
         }
         return inflater.inflate(R.layout.fragment_splash_screen, container, false)
