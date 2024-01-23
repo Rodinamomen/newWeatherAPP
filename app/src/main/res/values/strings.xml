@@ -8,7 +8,7 @@
     <string name="title_1">Detailed Hourly Forecast</string>
     <string name="description_1">Get in - depth weather information.</string>
     <string name="title_2">Real-Time Weather Map</string>
-    <string name="description_2">Watch the progress of the precipitation to stay informed</string>
+    <string name="description_2">Watch the progress of the precipitation to stay informed.</string>
     <string name="title_3">Weather Around the World</string>
     <string name="description_3">Add any location you want and swipe easily to chnage.</string>
 </resources>

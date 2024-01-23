@@ -8,4 +8,5 @@
     <color name="font_main">#0A0A22</color>
     <color name="forecastColor">#8B95A2</color>
     <color name="startBackgroundColor">#484B5B</color>
+    <color name="progressBar">#FF4F80</color>
 </resources>
