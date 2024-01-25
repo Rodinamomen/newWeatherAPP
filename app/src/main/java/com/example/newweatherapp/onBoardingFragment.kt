@@ -64,7 +64,6 @@ class onBoardingFragment : Fragment() {
         })
 
     }
-
     private fun setProgressBarValue(position: Int) {
         when (position) {
             0 -> {
@@ -86,7 +85,6 @@ class onBoardingFragment : Fragment() {
             }
         }
     }
-
     private fun setProgressBarValueWithButton() {
         if (currentPage == 0) {
             currentPage = 1
