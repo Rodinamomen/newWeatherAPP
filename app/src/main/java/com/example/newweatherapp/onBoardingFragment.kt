@@ -1,5 +1,6 @@
 package com.example.newweatherapp
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -43,6 +45,7 @@ class onBoardingFragment : Fragment() {
         viewPager.adapter = viewpagerAdapter
         wormDotsIndicator.attachTo(viewPager)
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
@@ -51,7 +54,10 @@ class onBoardingFragment : Fragment() {
                 when (position) {
                     0 -> setProgressBarValue(0)
                     1 -> setProgressBarValue(1)
-                    2 -> setProgressBarValue(2)
+                    2 -> {
+                        setProgressBarValue(2)
+                        findNavController().navigate(R.id.action_onBoardingFragment_to_weatherActivity)
+                    }
                 }
             }
 
@@ -64,6 +70,7 @@ class onBoardingFragment : Fragment() {
         })
 
     }
+
     private fun setProgressBarValue(position: Int) {
         when (position) {
             0 -> {
@@ -82,9 +89,11 @@ class onBoardingFragment : Fragment() {
                 currentPage = 2
                 progress = 100
                 progressBar.progress = progress
+                findNavController().navigate(R.id.action_onBoardingFragment_to_weatherActivity)
             }
         }
     }
+
     private fun setProgressBarValueWithButton() {
         if (currentPage == 0) {
             currentPage = 1
@@ -99,6 +108,7 @@ class onBoardingFragment : Fragment() {
         } else if (currentPage == 2) {
             progress = 100
             progressBar.progress = progress
+            findNavController().navigate(R.id.action_onBoardingFragment_to_weatherActivity)
         }
     }
 }
